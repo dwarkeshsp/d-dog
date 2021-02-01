@@ -6,3 +6,4 @@ What prevents a node from lying about its public key so that it looks like anoth
 
 I can imagine a distributed ledger which notes how much each person has contributed to seeding stuff in general and then create a system where people deliver files to these altruists first. But I can also imagine a system where where people keep track of who has helped them personally and help those people first. The first is like trade with currency and the latter is like barter. Which is preferable?
 
+How many peers does IPFS or another p2p protocol need before it has as much or lower latency than centralized servers? Is the bottleneck finding a seeder or using the seeder's slow upload
