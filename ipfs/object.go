@@ -4,6 +4,8 @@ import (
 	"crypto/sha1"
 	"fmt"
 	"io/ioutil"
+	"os"
+	"path/filepath"
 )
 
 type IPFSLink struct {
@@ -27,6 +29,19 @@ func check(e error) {
 	}
 }
 
+// CreateIPFSTree converts normal directory into IPFS tree
+func CreateIPFSTree(dirpath string) {
+	filepath.Walk(dirpath, func(path string, f os.FileInfo, err error) error {
+		switch mode := f.Mode(); {
+		case mode.IsDir():
+			DirToIPFSObject(path)
+		case mode.isRegular():
+			FileToIPFSObject(path)
+		}
+
+	})
+}
+
 func FileToIPFSObject(filepath string) {
 	dat, err := ioutil.ReadFile(filepath)
 	check(err)
@@ -46,6 +61,6 @@ func FileToIPFSObject(filepath string) {
 	return
 }
 
-func DirToIPFSObject(dirname string) {
+func DirToIPFSObject(dirpath string) {
 	return
 }
